@@ -16,5 +16,6 @@ After running the script, you'll find a downloaded `cove.zip` file in the folder
 
 1. Extract the `cove.zip` file.
 2. Locate and install the nerd fonts.
+3. download `mytheme.omp` from this resporatory and place it in my documents.
 
 Now, enjoy your enhanced and stylish PowerShell experience! 🚀
