@@ -36,7 +36,6 @@ function Update-Profile {
         Remove-Item "$env:temp/Microsoft.PowerShell_profile.ps1" -ErrorAction SilentlyContinue
     }
 }
-Update-Profile
 
 function Update-PowerShell {
     if (-not $global:canConnectToGitHub) {
@@ -186,14 +185,8 @@ function Get-PubIP { (Invoke-WebRequest http://ifconfig.me/ip).Content }
 #
 # If your favorite editor is not here, add an elseif and ensure that the directory it is installed in exists in your $env:Path
 #
-if (Test-CommandExists nvim) {
-    $EDITOR='nvim'
-} elseif (Test-CommandExists pvim) {
-    $EDITOR='pvim'
-} elseif (Test-CommandExists vim) {
+if (Test-CommandExists vim) {
     $EDITOR='vim'
-} elseif (Test-CommandExists vi) {
-    $EDITOR='vi'
 } elseif (Test-CommandExists code) {
     $EDITOR='code'
 } elseif (Test-CommandExists notepad) {
@@ -362,15 +355,4 @@ Set-PSReadLineOption -Colors @{
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/jandedobbeleer.omp.json | Invoke-Expression
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& { (zoxide init powershell | Out-String) })
-} else {
-    Write-Host "zoxide command not found. Attempting to install via winget..."
-    try {
-        winget install -e --id ajeetdsouza.zoxide
-        Write-Host "zoxide installed successfully. Initializing..."
-        Invoke-Expression (& { (zoxide init powershell | Out-String) })
-    } catch {
-        Write-Error "Failed to install zoxide. Error: $_"
-    }
-}
+
