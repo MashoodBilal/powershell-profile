@@ -10,7 +10,6 @@ if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
     Install-Module -Name Terminal-Icons -Scope CurrentUser -Force -SkipPublisherCheck
 }
 Import-Module -Name Terminal-Icons
-Import-Module -Name z
 Import-Module PSReadLine
 
 
@@ -329,5 +328,5 @@ Set-PSReadLineOption -Colors @{
 }
 
 ## Final Line to set prompt
-oh-my-posh init pwsh --config https://raw.githubusercontent.com/MashoodBilal/powershell-profile/main/mytheme.omp | Invoke-Expression
+oh-my-posh init pwsh --config https://raw.githubusercontent.com/MashoodBilal/powershell-profile/main/mytheme.omp.json | Invoke-Expression
 
